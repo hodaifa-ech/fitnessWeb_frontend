@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { SharedModule } from '../../shared/shared.module';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { UserService } from '../../service/user.service';
 
 @Component({
   selector: 'app-activity',
@@ -18,7 +19,9 @@ export class ActivityComponent {
     
   };
   activityForm!: FormGroup;
-   constructor(private fb: FormBuilder,private message:NzMessageService) { }
+   constructor(private fb: FormBuilder,
+    private message:NzMessageService,
+  private userService:UserService) { }
     ngOnInit(){
       this.activityForm = this.fb.group({
       caloriesBurned: [null,Validators.required],
@@ -26,6 +29,14 @@ export class ActivityComponent {
       distance: [null,Validators.required],
       date: [null,Validators.required],
     });
+  }
+  submiForm(){
+    this.userService.postActivity(this.activityForm.value).subscribe(res=>{
+        this.message.success('Form submitted successfully',{nzDuration:5000});
+        this.activityForm.reset();
+    },error=>{
+      this.message.error('Error submitting form',{nzDuration:5000});
+    })
   }
       
    }

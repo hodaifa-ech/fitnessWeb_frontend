@@ -1,0 +1,17 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+
+
+const BASE_URL = 'http://localhost:8081/';
+@Injectable({
+  providedIn: 'root'
+})
+export class UserService {
+
+  constructor(private http:HttpClient) { }
+
+  postActivity(activityDto:any):Observable<any>{
+    return this.http.post(BASE_URL +"api/activity",activityDto);
+  }
+}
