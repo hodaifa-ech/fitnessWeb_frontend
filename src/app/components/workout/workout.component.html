@@ -1,0 +1,46 @@
+<div>
+    <div nz-row>
+        <h1 nz-card-grid [ngStyle]="gridStyle">Workout</h1>
+    </div>
+
+    <div nz-row>
+      <div nz-col nzFlex="2">
+        <nz-card nzType="inner" style="margin-top: 16px;" nzTitle="Workout Plan">
+          <form nz-form [formGroup]="workoutForm" class="custom-forms" >
+            <nz-form-item>
+              <nz-form-control nzErrorTip="please input the calories">
+                <input type="text" nz-input formControlName="caloriesBurned" placeholder="Enter the calories You burned">
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <nz-form-control nzErrorTip="please input the duration">
+                <input type="number" nz-input formControlName="duration" placeholder="Enter the duration">
+              </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item>
+              <nz-form-control nzErrorTip="please input the date">
+                <nz-date-picker style="width: 100%;" formControlName="date" nzPlaceHolder="Select date"></nz-date-picker>
+              </nz-form-control>
+            </nz-form-item>
+               
+            <nz-form-item>
+                <nz-form-control nzErrorTip="please input the date">
+                 <nz-select nzAllowClear nzPlaceHolder="select the type" formControlName="type">
+                    <nz-option *ngFor="let type of listOfType" [nzLabel]="type" [nzValue]="type"></nz-option>
+                   
+                    </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+              <button nz-button nzType="primary" nzBlock class="w-100" [disabled]="workoutForm.invalid">
+                Post workout
+            </button>
+
+            </form>
+        </nz-card>
+
+           
+      </div>
+    </div>
+
+</div>
