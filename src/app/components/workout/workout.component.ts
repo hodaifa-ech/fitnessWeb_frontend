@@ -18,7 +18,7 @@ export class WorkoutComponent {
       textAlign: 'center',
     };
 
-
+    workouts:any;
     workoutForm!:FormGroup;
 
 
@@ -47,18 +47,26 @@ export class WorkoutComponent {
          
             date: [null,[Validators.required]],
           });
+          this.getAllWorkouts();
         }
-     
+        getAllWorkouts() {
+
+          this.userService.getWorkouts().subscribe(res => {
+            this.workouts = res;
+            console.log(this.workouts);
+          });
+        }
         submiForm(){
-          this.userService.postActivity(this.workoutForm.value).subscribe(res=>{
+          this.userService.postWorkout(this.workoutForm.value).subscribe(res=>{
             this.message.success('Form submitted successfully',{nzDuration:5000});
             this.workoutForm.reset();
+            this.getAllWorkouts();
             
         },error=>{
           this.message.error('Error submitting form',{nzDuration:5000});
         })
       }
     
-
+     
 
 }

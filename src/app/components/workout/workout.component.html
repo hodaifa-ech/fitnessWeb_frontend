@@ -41,6 +41,23 @@
 
            
       </div>
+      <div nz-col nzFlex="3" style="margin-left: 20px;">
+
+        <nz-card nzType="innere" style="margin-top: 16px;" nzTitle="Past workouts">
+            <div nz-card-grid style="width: 100%;" *ngFor="let workout of workouts">
+                  <div nz-col nzSpan="30">
+                    Calories burned: <strong> {{workout.caloriesBurned}}</strong>
+                    -
+                    duration: <strong> {{workout.duration}} </strong>
+                    -
+                    type: <strong> {{workout.type}}</strong>
+                    -
+                    Date: <strong> {{workout.date | date: 'dd/MM/yyyy'}}</strong>
+                  </div>
+            </div>
+        </nz-card>
+    </div>
+
     </div>
 
 </div>
