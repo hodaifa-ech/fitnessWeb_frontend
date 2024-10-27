@@ -6,7 +6,7 @@
     <div nz-row>
       <div nz-col nzFlex="2">
         <nz-card nzType="inner" style="margin-top: 16px;" nzTitle="Workout Plan">
-          <form nz-form [formGroup]="workoutForm" class="custom-forms" >
+          <form nz-form [formGroup]="workoutForm" class="custom-forms" (ngSubmit)="submiForm()">
             <nz-form-item>
               <nz-form-control nzErrorTip="please input the calories">
                 <input type="text" nz-input formControlName="caloriesBurned" placeholder="Enter the calories You burned">

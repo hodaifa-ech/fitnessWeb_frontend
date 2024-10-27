@@ -49,7 +49,15 @@ export class WorkoutComponent {
           });
         }
      
-     
+        submiForm(){
+          this.userService.postActivity(this.workoutForm.value).subscribe(res=>{
+            this.message.success('Form submitted successfully',{nzDuration:5000});
+            this.workoutForm.reset();
+            
+        },error=>{
+          this.message.error('Error submitting form',{nzDuration:5000});
+        })
+      }
     
 
 
