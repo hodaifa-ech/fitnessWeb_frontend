@@ -1,0 +1,45 @@
+<div>
+    <div nz-row>
+        <h1 nz-card-grid [ngStyle]="gridStyle">Goal</h1>
+    </div>
+
+    <div>
+        
+       
+        <div nz-row>
+            <div nz-col nzFlex="2">
+    
+                <nz-card nzType="inner" style="margin-top: 16px;" nzTitle="Post New Activity">
+                    <form nz-form [formGroup]="goalForm" class="custom-forms" >
+                        <nz-form-item>
+                            <nz-form-control nzErrorTip="please input the description">
+                                <textarea  nz-input formControlName="description" placeholder="Enter the description"
+                              [nzAutosize]="{minRows:2,maxRows:6}">
+                            </textarea>
+                              </nz-form-control>
+                        </nz-form-item>
+                       
+                        <nz-form-item>
+                            <nz-form-control nzErrorTip="please select the start date">
+                                <nz-date-picker  style="width: 100%;" formControlName="startDate" nzPlaceHolder="Select start date"></nz-date-picker>
+                              </nz-form-control>
+                        </nz-form-item>
+                        <nz-form-item>
+                            <nz-form-control nzErrorTip="please select the end date">
+                                <nz-date-picker  style="width: 100%;" formControlName="endDate" nzPlaceHolder="Select end date"></nz-date-picker>
+                              </nz-form-control>
+                        </nz-form-item>
+                       
+                        <button nz-button nzType="primary" nzBlock class="w-100" [disabled]="goalForm.invalid">
+                            Post Goal
+                        </button>
+                    </form>
+                </nz-card>
+            </div>
+            <div nz-col nzFlex="3" style="margin-left: 20px;">
+
+
+            </div>
+        </div>
+    </div>
+</div>
