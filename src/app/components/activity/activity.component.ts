@@ -19,6 +19,8 @@ export class ActivityComponent {
     
   };
   activityForm!: FormGroup;
+activities:any;
+
    constructor(private fb: FormBuilder,
     private message:NzMessageService,
   private userService:UserService) { }
@@ -29,14 +31,25 @@ export class ActivityComponent {
       distance: [null,Validators.required],
       date: [null,Validators.required],
     });
+
+    this.getAllActivities();
   }
   submiForm(){
     this.userService.postActivity(this.activityForm.value).subscribe(res=>{
         this.message.success('Form submitted successfully',{nzDuration:5000});
         this.activityForm.reset();
+        this.getAllActivities();
     },error=>{
       this.message.error('Error submitting form',{nzDuration:5000});
     })
+  }
+
+  getAllActivities() {
+
+    this.userService.getActivity().subscribe(res => {
+      this.activities = res;
+      console.log(this.activities);
+    });
   }
       
    }
