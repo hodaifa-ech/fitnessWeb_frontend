@@ -51,6 +51,8 @@ activities:any;
       console.log(this.activities);
     });
   }
+
+  
       
    }
   

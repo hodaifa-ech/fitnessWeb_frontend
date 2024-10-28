@@ -41,7 +41,14 @@ goals:any;
     this.getAllGoals();
     
   }
-
+  updateStatus(id:number){
+    this.userService.updateGoalStatus(id).subscribe(res=>{
+      this.message.success('Goal status updated successfully',{nzDuration:5000});
+      this.getAllGoals();
+    },error=>{
+      this.message.error('Error updating goal status',{nzDuration:5000});
+    })
+  }
   submiForm(){
     this.userService.postGoal(this.goalForm.value).subscribe(res=>{
       this.message.success('Form submitted successfully',{nzDuration:5000});
