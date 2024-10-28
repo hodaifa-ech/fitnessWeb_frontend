@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { ActivityComponent } from './components/activity/activity.component';
 import { WorkoutComponent } from './components/workout/workout.component';
 import { GoalComponent } from './components/goal/goal.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 export const routes: Routes = [
 
@@ -16,5 +17,9 @@ export const routes: Routes = [
       {
          path:"goal",
          component: GoalComponent
+       },
+       {
+         path:"dashboard",
+         component: DashboardComponent
        }
 ];
