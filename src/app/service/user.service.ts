@@ -25,4 +25,9 @@ export class UserService {
   getWorkouts():Observable<any>{
     return this.http.get(BASE_URL +"api/workouts");
   }
+
+
+  postGoal(goalDto:any):Observable<any>{
+    return this.http.post(BASE_URL +"api/goal",goalDto);
+  }
 }

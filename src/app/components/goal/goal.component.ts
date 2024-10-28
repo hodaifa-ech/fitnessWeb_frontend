@@ -33,4 +33,16 @@ goals:any;
 
     
   }
+
+  submiForm(){
+    this.userService.postGoal(this.goalForm.value).subscribe(res=>{
+      this.message.success('Form submitted successfully',{nzDuration:5000});
+      this.goalForm.reset();
+      
+      
+  },error=>{
+    this.message.error('Error submitting form',{nzDuration:5000});
+  })
+}
+
 }
