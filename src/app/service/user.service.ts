@@ -39,5 +39,7 @@ export class UserService {
   getStats():Observable<any>{
     return this.http.get(BASE_URL +"api/stats");
   }
-   
+  getGraphStats():Observable<any>{
+    return this.http.get(BASE_URL +"api/graphs");
+  }
 }

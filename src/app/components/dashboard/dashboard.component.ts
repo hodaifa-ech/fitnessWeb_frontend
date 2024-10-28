@@ -13,12 +13,23 @@ export class DashboardComponent {
 
 
   statsData:any;
+  workouts:any;
+  activities:any;
 
   constructor(private userService:UserService) { }
   ngOnInit(): void {
     this.getStats();
+    this.getGraphStats();
   }
 
+
+  getGraphStats(){
+    this.userService.getGraphStats().subscribe(res => {
+      this.workouts = res.workouts;
+      this.activities = res.activities;
+      console.log(res);
+    });
+  }
   getStats(){
     this.userService.getStats().subscribe(res => {
       console.log(res);
@@ -26,4 +37,5 @@ export class DashboardComponent {
 
     });
   }
+
 }
