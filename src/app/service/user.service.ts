@@ -30,4 +30,8 @@ export class UserService {
   postGoal(goalDto:any):Observable<any>{
     return this.http.post(BASE_URL +"api/goal",goalDto);
   }
+  getGoals():Observable<any>{
+    return this.http.get(BASE_URL +"api/goals");
+  }
+
 }

@@ -23,6 +23,14 @@ goals:any;
    constructor(private fb: FormBuilder,
     private message:NzMessageService,
   private userService:UserService) { }
+
+  getAllGoals() {
+
+    this.userService.getGoals().subscribe(res => {
+      this.goals = res;
+      console.log(this.goals);
+    });
+  }
     ngOnInit(){
       this.goalForm = this.fb.group({
         description: [null,Validators.required],
@@ -30,7 +38,7 @@ goals:any;
         endDate: [null,Validators.required],
         
     });
-
+    this.getAllGoals();
     
   }
 
@@ -38,7 +46,7 @@ goals:any;
     this.userService.postGoal(this.goalForm.value).subscribe(res=>{
       this.message.success('Form submitted successfully',{nzDuration:5000});
       this.goalForm.reset();
-      
+      this.getAllGoals();
       
   },error=>{
     this.message.error('Error submitting form',{nzDuration:5000});
